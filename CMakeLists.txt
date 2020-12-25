@@ -52,3 +52,31 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
 #add_subdirectory(zhw_new)
 
 add_subdirectory(3rdparty/LuaJIT)
+
+
+
+
+function(snippet number)
+    add_executable(snippet${number} src/examples/LuaJIT-examples.cpp)
+    target_compile_definitions(snippet${number} PRIVATE SNIPPET${number})
+    target_link_directories(snippet${number} PRIVATE
+        ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}
+    )
+    target_link_libraries(snippet${number} lua51.lib)
+    target_include_directories(snippet${number} PRIVATE 
+        ${PROJECT_SOURCE_DIR}/3rdparty
+        
+    )
+endfunction(snippet)
+
+
+snippet(01)
+snippet(02)
+snippet(03)
+snippet(04)
+snippet(05)
+snippet(06)
+snippet(07)
+snippet(08)
+snippet(09)
+snippet(10)
